@@ -1,6 +1,5 @@
 import 'url-search-params-polyfill';
-import React from 'react';
-import { Location } from '@reach/router';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { FaTwitter } from 'react-icons/fa';
 import { colors, fonts } from '../config/styles';
@@ -36,35 +35,34 @@ const Icon = styled(FaTwitter)`
   font-size: 0.75em;
 `;
 
-export default ({ quote, retweetId = false }) => (
-  <Box>
-    <Text>{quote}</Text>
+export default ({ quote, retweetId = false }) => {
+  const [location, setLocation] = useState('https://lengstorf.com');
 
-    <Location>
-      {({ location }) => {
-        // This is probably a too-clever trick to avoid using `let`. 😅
-        const { intent, params } = retweetId
-          ? {
-              intent: 'retweet',
-              params: new URLSearchParams({ tweet_id: retweetId }),
-            }
-          : {
-              intent: 'tweet',
-              params: new URLSearchParams({
-                text: `“${quote}” –@jlengstorf`,
-                url: location.href,
-                related: 'jlengstorf',
-              }),
-            };
+  useEffect(() => {
+    setLocation(window.location.href);
+  }, []);
 
-        return (
-          <Link
-            href={`https://twitter.com/intent/${intent}?${params.toString()}`}
-          >
-            <Icon /> Quote this on Twitter
-          </Link>
-        );
-      }}
-    </Location>
-  </Box>
-);
+  // This is probably a too-clever trick to avoid using `let`. 😅
+  const { intent, params } = retweetId
+    ? {
+        intent: 'retweet',
+        params: new URLSearchParams({ tweet_id: retweetId }),
+      }
+    : {
+        intent: 'tweet',
+        params: new URLSearchParams({
+          text: `“${quote}” –@jlengstorf`,
+          url: location,
+          related: 'jlengstorf',
+        }),
+      };
+
+  return (
+    <Box>
+      <Text>{quote}</Text>
+      <Link href={`https://twitter.com/intent/${intent}?${params.toString()}`}>
+        <Icon /> Quote this on Twitter
+      </Link>
+    </Box>
+  );
+};
