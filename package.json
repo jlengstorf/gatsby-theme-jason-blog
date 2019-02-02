@@ -1,6 +1,8 @@
 {
   "name": "gatsby-theme-jason-blog",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
+  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "repository": "https://github.com/jlengstorf/gatsby-theme-jason-blog",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
@@ -8,7 +10,8 @@
     "serve": "gatsby serve",
     "lint:js": "eslint src",
     "lint:css": "stylelint \"src/**/*.css\"",
-    "lint": "yarn lint:js && yarn lint:css"
+    "lint": "yarn lint:js && yarn lint:css",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
@@ -64,7 +67,8 @@
     "remark-preset-lint-recommended": "^3.0.1",
     "stylelint": "^9.6.0",
     "stylelint-config-standard": "^18.0.0",
-    "webpack-bundle-analyzer": "^3.0.3"
+    "webpack-bundle-analyzer": "^3.0.3",
+    "semantic-release": "^15.13.3"
   },
   "main": "gatsby-config.js"
 }
