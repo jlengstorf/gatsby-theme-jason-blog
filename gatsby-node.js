@@ -38,8 +38,9 @@ const paginate = (
 ) =>
   posts
     // 1
-    .map((_, index, allPosts) =>
-      index % 10 === 0 ? allPosts.slice(index, index + 10) : null,
+    .map(
+      (_, index, allPosts) =>
+        index % 10 === 0 ? allPosts.slice(index, index + 10) : null,
     )
     // 2
     .filter(item => item)
@@ -71,15 +72,15 @@ const paginate = (
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      alias: { $components: path.resolve(__dirname, 'src/components') },
-    },
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+      alias: { $components: path.resolve(__dirname, "src/components") }
+    }
   });
 };
 
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
-    name: '@babel/plugin-proposal-export-default-from',
+    name: "@babel/plugin-proposal-export-default-from"
   });
 };
 
@@ -94,6 +95,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ) {
         edges {
           node {
+            id
             childMdx {
               code {
                 scope
@@ -120,11 +122,7 @@ exports.createPages = async ({ graphql, actions }) => {
     .filter(post => post.childMdx.frontmatter.publish !== false);
 
   posts.forEach(post => {
-    if (
-      !post.childMdx ||
-      !post.childMdx.frontmatter ||
-      !post.childMdx.frontmatter.slug
-    ) {
+    if (!post.childMdx || !post.childMdx.frontmatter || !post.childMdx.frontmatter.slug) {
       console.log(post); // eslint-disable-line no-console
       throw Error('All posts require a `slug` field in the frontmatter.');
     }
@@ -140,13 +138,13 @@ exports.createPages = async ({ graphql, actions }) => {
         imageRegex: `/${image}/`,
         offer: `/offers/${cta}/`,
         slug,
-      },
-    });
+      }
+    })
   });
 
   const paginationDefaults = {
     createPage,
-    component: require.resolve('./src/templates/previews.js'),
+    component: require.resolve('./src/templates/previews.js')
   };
 
   const allPosts = posts.filter(
@@ -185,7 +183,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // The /hire-me page no longer exists, so send to contact instead.
   createRedirect({
     fromPath: '/hire-me',
-    toPath: '/contact/',
+    toPath: '/contact',
     isPermanent: true,
     redirectInBrowser: true,
   });
@@ -193,7 +191,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // The /cost-of-living page no longer exists, so send to the blog instead.
   createRedirect({
     fromPath: '/cost-of-living',
-    toPath: '/cost-of-living-remotely/',
+    toPath: '/cost-of-living-remotely',
     isPermanent: true,
     redirectInBrowser: true,
   });

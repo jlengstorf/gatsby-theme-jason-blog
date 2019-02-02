@@ -1,11 +1,15 @@
 {
   "name": "gatsby-theme-jason-blog",
   "version": "0.0.1",
-  "description": "The Gatsby theme powering the blog portion of Jason Lengstorf’s website.",
-  "main": "gatsby-config.js",
-  "repository": "https://github.com/jlengstorf/gatsby-theme-jason-blog",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
   "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "lint:js": "eslint src",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "lint": "yarn lint:js && yarn lint:css"
+  },
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@emotion/core": "^10.0.6",
@@ -25,6 +29,7 @@
     "gatsby-plugin-emotion": "^4.0.1",
     "gatsby-plugin-manifest": "^2.0.6",
     "gatsby-plugin-offline": "^2.0.9",
+    "gatsby-plugin-page-creator": "^2.0.6",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^2.0.8",
@@ -52,5 +57,14 @@
     "retext": "^6.0.1",
     "url-search-params-polyfill": "^5.0.0",
     "whatwg-fetch": "^3.0.0"
-  }
+  },
+  "devDependencies": {
+    "jl-toolbox": "^0.9.2",
+    "remark-cli": "^6.0.0",
+    "remark-preset-lint-recommended": "^3.0.1",
+    "stylelint": "^9.6.0",
+    "stylelint-config-standard": "^18.0.0",
+    "webpack-bundle-analyzer": "^3.0.3"
+  },
+  "main": "gatsby-config.js"
 }
