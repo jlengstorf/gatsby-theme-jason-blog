@@ -2,7 +2,7 @@
   "name": "gatsby-theme-jason-blog",
   "version": "0.0.0-development",
   "author": "Jason Lengstorf <jason@gatsbyjs.com>",
-  "repository": "https://github.com/jlengstorf/gatsby-theme-jason-blog",
+  "repository": "git@github.com:jlengstorf/gatsby-theme-jason-blog.git",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
