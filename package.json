@@ -8,6 +8,7 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
