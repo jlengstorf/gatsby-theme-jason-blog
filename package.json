@@ -13,8 +13,8 @@
   },
   "peerDependencies": {
     "gatsby": "^2.0.91",
-    "react": "^16.8.0-alpha.1",
-    "react-dom": "^16.8.0-alpha.1"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
@@ -63,10 +63,10 @@
   },
   "devDependencies": {
     "gatsby": "^2.0.91",
-    "react": "^16.8.0-alpha.1",
-    "react-dom": "^16.8.0-alpha.1",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "semantic-release": "^15.13.3",
     "webpack-bundle-analyzer": "^3.0.3"
   },
-  "main": "gatsby-config.js"
+  "main": "index.js"
 }
