@@ -17,8 +17,9 @@ const getHeading = ({
   categories,
 }) => {
   if (type === 'category' && value) {
-    const category = categories.find(c => c.slug === value).display || value;
-    return `Posts in the category “${category}”`;
+    const category = categories.find(c => c.slug === value);
+    const displayName = category ? category.name : value;
+    return `Posts in the category “${displayName}”`;
   }
 
   if (type === 'tag' && value) {

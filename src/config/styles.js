@@ -1,54 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import { Global, css } from '@emotion/core';
-
-export const colors = {
-  darkest: '#1e0d2b',
-  lightest: '#fff',
-  lightestTransparent: 'rgba(255, 255, 255, 0)',
-  lightestAlpha: 'rgba(255, 255, 255, 0.97)',
-  purple: '#c700eb',
-  purpleDark: '#b200d1',
-  heading: '#1e0d2b',
-  text: '#685d71',
-  textLight: '#776d7f',
-  textDark: '#463652',
-  gray: '#7f7e7e',
-  grayLightest: '#f5f5f5',
-  grayAlpha: 'rgba(214, 209, 230, 0.5)',
-  grayAlphaExtra: 'rgba(214, 209, 230, 0.25)',
-};
-
-const defaultFontStack = [
-  '-apple-system',
-  'BlinkMacSystemFont',
-  'Segoe UI',
-  'Roboto',
-  'Helvetica',
-  'Arial',
-  'sans-serif',
-  'Apple Color Emoji',
-  'Segoe UI Emoji',
-  'Segoe UI Symbol',
-];
-
-export const fonts = {
-  sizeSm: '16px',
-  sizeMd: '18px',
-  default: defaultFontStack.join(', '),
-  heading: ['mallory', ...defaultFontStack].join(', '),
-};
-
-export const animation = {
-  transitionTime: '150ms',
-};
-
-export const media = {
-  vertSmall: '(min-width: 370px) and (min-height: 650px)',
-  small: '(min-width: 480px)',
-  medium: '(min-width: 700px)',
-  large: '(min-width: 960px)',
-};
+import animation from '../tokens/animation';
+import colors from '../tokens/colors';
+import fonts from '../tokens/fonts';
+import media from '../tokens/media';
 
 export const Reset = () => (
   <Global
@@ -509,9 +465,8 @@ export const Utilities = () => (
   />
 );
 
-export default {
-  animation,
-  colors,
-  fonts,
-  media,
-};
+export { default as animation } from '../tokens/animation';
+export { default as colors } from '../tokens/colors';
+export { default as fonts } from '../tokens/fonts';
+export { default as media } from '../tokens/media';
+export default { animation, colors, fonts, media };

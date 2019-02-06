@@ -1,0 +1,16 @@
+export default {
+  darkest: '#1e0d2b',
+  lightest: '#fff',
+  lightestTransparent: 'rgba(255, 255, 255, 0)',
+  lightestAlpha: 'rgba(255, 255, 255, 0.97)',
+  purple: '#c700eb',
+  purpleDark: '#b200d1',
+  heading: '#1e0d2b',
+  text: '#685d71',
+  textLight: '#776d7f',
+  textDark: '#463652',
+  gray: '#7f7e7e',
+  grayLightest: '#f5f5f5',
+  grayAlpha: 'rgba(214, 209, 230, 0.5)',
+  grayAlphaExtra: 'rgba(214, 209, 230, 0.25)',
+};
