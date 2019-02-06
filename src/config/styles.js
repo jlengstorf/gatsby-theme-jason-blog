@@ -1,10 +1,16 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import { Global, css } from '@emotion/core';
-import animation from '../tokens/animation';
-import colors from '../tokens/colors';
-import fonts from '../tokens/fonts';
-import media from '../tokens/media';
+import animationDefaults from '../tokens/animation';
+import colorDefaults from '../tokens/colors';
+import fontDefaults from '../tokens/fonts';
+import mediaDefaults from '../tokens/media';
+import theme from '../theme';
+
+export const animation = { ...animationDefaults, ...(theme.animation || {}) };
+export const colors = { ...colorDefaults, ...(theme.colors || {}) };
+export const fonts = { ...fontDefaults, ...(theme.fonts || {}) };
+export const media = { ...mediaDefaults, ...(theme.media || {}) };
 
 export const Reset = () => (
   <Global
@@ -465,8 +471,4 @@ export const Utilities = () => (
   />
 );
 
-export { default as animation } from '../tokens/animation';
-export { default as colors } from '../tokens/colors';
-export { default as fonts } from '../tokens/fonts';
-export { default as media } from '../tokens/media';
 export default { animation, colors, fonts, media };
