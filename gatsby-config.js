@@ -2,90 +2,25 @@ require('dotenv').config();
 
 const path = require('path');
 
-const buildAlgoliaSearchIndex = process.env.BUILD_ALGOLIA_INDEX && process.env.BRANCH === 'master'
-  ? [
-    {
-      resolve: 'gatsby-plugin-algolia',
-      options: {
-        appId: process.env.ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
-        queries: [
-          {
-            query: `
-              {
-                allMdx(filter: {
-                  frontmatter: {
-                    slug: {ne: null},
-                    publish: {ne: false}
-                  }
-                }) {
-                  edges {
-                    node {
-                      frontmatter {
-                        slug
-                        title
-                        seo_title
-                        description
-                        images
-                      }
-                      rawBody
-                    }
-                  }
-                }
-              }
-            `,
-            transformer: ({ data }) =>
-              data.allMdx.edges.reduce((records, { node }) => {
-                const {
-                  slug,
-                  title,
-                  seo_title: alt,
-                  description,
-                } = node.frontmatter;
-
-                const base = { slug, title, alt, description };
-                const chunks = node.rawBody.split('\n\n');
-
-                return [
-                  ...records,
-                  ...chunks.map((text, index) => ({
-                    ...base,
-                    objectID: `${slug}-${index}`,
-                    text,
-                  })),
-                ];
-              }, []),
-          }
-        ]
-      }
-    }
-  ]
-  : [];
-
 module.exports = {
   siteMetadata: {
-    title: 'Jason Lengstorf · There’s more to life than hustle & grind.',
+    title: 'Jason’s Blog Theme — It’s SICK',
     description: `
-      Jason Lengstorf is a developer advocate, senior engineer, and occasional
-      designer. He builds highly productive teams and communities through better
-      communication, systems, processes,  and balance. He lives in
-      Portland, Oregon.
+      This is a blog theme. The description will be showed in SEO results on pages
+      without their own descriptions.
     `,
-    canonicalUrl: 'https://lengstorf.com',
+    canonicalUrl: 'https://example.com',
     image: 'https://lengstorf.com/images/jason-lengstorf.jpg',
     author: {
-      name: 'Jason Lengstorf',
+      name: 'Your Name',
       minibio: `
-        <strong>Jason Lengstorf</strong> is a lead developer & architect at Gatsby.
-        He’s a frequent <a href="/speaking">speaker</a>, occasional
-        <a href="https://dribbble.com/jlengstorf">designer</a>, and an advocate of
-        building better balance via efficiency. He lives in Portland, Oregon.
+        This bio is shown at the bottom of each blog post. It supports
+        <strong>custom HTML</strong> if you’re into that sort of thing.
       `,
     },
     organization: {
-      name: 'Jason Lengstorf',
-      url: 'https://lengstorf.com',
+      name: 'Example, Inc.',
+      url: 'https://example.com',
       logo: 'https://lengstorf.com/android-chrome-512x512.png',
     },
     social: {
@@ -94,36 +29,8 @@ module.exports = {
     },
     categories: [
       {
-        slug: 'acting-like-a-grown-up',
-        name: 'Acting Like a Grown-Up',
-      },
-      {
-        slug: 'finding-direction',
-        name: 'Finding Direction',
-      },
-      {
-        slug: 'happiness',
-        name: 'Building Happiness',
-      },
-      {
-        slug: 'motivation',
-        name: 'Staying Motivated',
-      },
-      {
-        slug: 'remote-productivity',
-        name: 'Remote Productivity',
-      },
-      {
-        slug: 'remote-work',
-        name: 'Living & Working Remotely',
-      },
-      {
-        slug: 'storytelling',
-        name: 'Storytelling',
-      },
-      {
-        slug: 'impact',
-        name: 'Creating an Impact',
+        slug: 'test',
+        name: 'Test Category',
       },
     ],
   },
@@ -132,14 +39,14 @@ module.exports = {
       resolve: 'gatsby-plugin-page-creator',
       options: {
         path: path.join(__dirname, 'src', 'pages'),
-      }
+      },
     },
     {
       resolve: 'gatsby-mdx',
       options: {
-        extensions: [".mdx", ".md"],
+        extensions: ['.mdx', '.md'],
         defaultLayouts: {
-          default: require.resolve('./src/templates/page.js')
+          default: require.resolve('./src/templates/page.js'),
         },
         globalScope: `
           import { Figure, Tweetable } from '$components';
@@ -158,22 +65,22 @@ module.exports = {
           { resolve: 'gatsby-remark-copy-linked-files' },
           { resolve: 'gatsby-remark-numbered-footnotes' },
           { resolve: 'gatsby-remark-smartypants' },
-        ]
-      }
+        ],
+      },
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-twitter',
     {
       resolve: 'gatsby-plugin-amplitude-analytics',
       options: {
-        apiKey: "f8d938da6faf54d25ee934390af70e01",
+        apiKey: 'f8d938da6faf54d25ee934390af70e01',
         head: false,
         respectDNT: true,
         amplitudeConfig: {
           includeUtm: true,
-          includeReferrer: true
-        }
-      }
+          includeReferrer: true,
+        },
+      },
     },
     'gatsby-plugin-catch-links',
     'gatsby-transformer-sharp',
@@ -236,7 +143,5 @@ module.exports = {
     //     globIgnores: ['**/*.pdf'],
     //   }
     // },
-
-    ...buildAlgoliaSearchIndex,
   ],
 };
