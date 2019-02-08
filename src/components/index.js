@@ -1,5 +1,3 @@
-export { default as Beard } from '../images/jason-lengstorf-beard.svg';
-export { default as BeardImage } from './BeardImage';
 export { default as Button } from './Button';
 export { default as ErrorMessage } from './ErrorMessage';
 export { default as Figure } from './Figure';
