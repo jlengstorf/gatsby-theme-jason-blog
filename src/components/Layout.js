@@ -4,15 +4,7 @@ import Helmet from 'react-helmet';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import {
-  Buttons,
-  Footnotes,
-  Images,
-  Reset,
-  Social,
-  Typography,
-  Utilities,
-} from '../config/styles';
+import GlobalStyles from './GlobalStyles';
 
 export default ({ children, title, className = '' }) => [
   <Helmet
@@ -40,13 +32,7 @@ export default ({ children, title, className = '' }) => [
     {/* Hosted webfonts because I can’t self-host Mallory 😭 */}
     <link rel="stylesheet" href="https://use.typekit.net/fnr1orp.css" />
   </Helmet>,
-  <Reset key="global-styles-reset" />,
-  <Typography key="global-styles-typography" />,
-  <Buttons key="global-styles-buttons" />,
-  <Footnotes key="global-styles-footnotes" />,
-  <Images key="global-styles-images" />,
-  <Social key="global-styles-social" />,
-  <Utilities key="global-styles-utilities" />,
+  <GlobalStyles key="global-styles" />,
   <Header key="app-header" />,
   <Main key="app-main" className={className}>
     {children}
