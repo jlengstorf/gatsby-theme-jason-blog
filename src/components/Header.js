@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import logo from '../images/jl-logo.svg';
-import { animation, colors, fonts, media } from '../config/styles';
+import logo from '../images/logo.svg';
+import { animation, colors, fonts, media } from '../tokens';
 import Search from './Search';
 
 const Header = styled('header')`
@@ -26,7 +26,7 @@ const Header = styled('header')`
 
   ::before {
     top: calc(100% - 1px);
-    background-color: ${colors.purple};
+    background-color: ${colors.primary};
   }
 
   ::after {
@@ -80,7 +80,7 @@ const NavLink = styled(Link)`
   transition-property: color;
 
   &.active {
-    color: ${colors.purple};
+    color: ${colors.primary};
   }
 
   &.hiddenSmall {
@@ -101,7 +101,7 @@ const NavLink = styled(Link)`
   :hover {
     background-color: transparent;
     border-radius: 0;
-    color: ${colors.purpleDark};
+    color: ${colors.primaryDark};
   }
 
   :focus {

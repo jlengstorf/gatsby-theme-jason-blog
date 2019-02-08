@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { Transition } from 'react-transition-group';
 import CloseButton from './CloseButton';
-import { colors, animation } from '../../config/styles';
+import { colors, animation } from '../../tokens';
 
 const Overlay = styled('div')`
   align-items: center;

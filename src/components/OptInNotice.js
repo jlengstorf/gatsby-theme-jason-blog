@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { colors } from '../config/styles';
+import { colors } from '../tokens';
 
 export default styled('p')`
   color: ${colors.textLight};

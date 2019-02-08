@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { media } from '../config/styles';
+import { media } from '../tokens';
 import Layout from './Layout';
 
 export default styled(Layout)`

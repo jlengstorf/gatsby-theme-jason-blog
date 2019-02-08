@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { media } from '../config/styles';
+import { media } from '../tokens';
 
 export default styled('h1')`
   font-size: 7.825vw;

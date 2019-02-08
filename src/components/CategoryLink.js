@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import { animation, colors } from '../config/styles';
+import { animation, colors } from '../tokens';
 
 const CatLink = styled(Link)`
   background-color: ${colors.text};
@@ -22,7 +22,7 @@ const CatLink = styled(Link)`
   :focus,
   :hover,
   :active {
-    background-color: ${colors.purple};
+    background-color: ${colors.primary};
     border-radius: 1em;
   }
 `;

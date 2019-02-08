@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styled from '@emotion/styled';
 import Button from './Button';
-import { animation, colors, media } from '../config/styles';
+import { animation, colors, media } from '../tokens';
 
 const API_URL = 'https://api-lengstorf.now.sh/user';
 const API_REDIRECT = 'https://lengstorf.com/confirm';
@@ -19,7 +19,7 @@ const Form = styled('form')`
       position: absolute;
       top: calc(50% - 0.5rem);
       left: calc(50% - 1rem);
-      background-color: var(${colors.purple});
+      background-color: var(${colors.primary});
       border-radius: 50%;
       transform: scale(0.1);
       animation-name: radar;
@@ -91,7 +91,7 @@ const Input = styled('input')`
 
   :focus {
     background-color: ${colors.grayLightest};
-    border-color: ${colors.purple};
+    border-color: ${colors.primary};
     outline: none;
   }
 

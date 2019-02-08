@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import CategoryLink from '../components/CategoryLink';
 import TagLink from '../components/TagLink';
 import Pagination from '../components/Pagination';
-import { colors } from '../config/styles';
+import { colors } from '../tokens';
 
 const getHeading = ({
   isFirstPage,

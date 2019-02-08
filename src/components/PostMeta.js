@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import CategoryLink from './CategoryLink';
 import TagLink from './TagLink';
-import { colors, media } from '../config/styles';
+import { colors, media } from '../tokens';
 
 const Wrapper = styled('aside')`
   color: ${colors.gray};

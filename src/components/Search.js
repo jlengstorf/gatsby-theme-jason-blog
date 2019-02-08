@@ -10,7 +10,7 @@ import {
 } from 'react-instantsearch-dom';
 import { FaSearch } from 'react-icons/fa';
 import Overlay from './Overlay/Overlay';
-import { colors, media } from '../config/styles';
+import { colors, media } from '../tokens';
 
 const client = algoliasearch('DXGPUQEB2T', 'f8919355b533de3d1337ad802ca61f4c');
 
@@ -89,7 +89,7 @@ const OpenSearch = styled('a')`
   :focus,
   :hover {
     background-color: transparent;
-    color: ${colors.purpleDark};
+    color: ${colors.primaryDark};
   }
 
   :focus {

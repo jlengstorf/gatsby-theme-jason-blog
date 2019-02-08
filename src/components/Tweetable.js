@@ -2,7 +2,7 @@ import 'url-search-params-polyfill';
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { FaTwitter } from 'react-icons/fa';
-import { colors, fonts } from '../config/styles';
+import { colors, fonts } from '../tokens';
 
 const Box = styled('blockquote')`
   border: 1px solid ${colors.grayAlpha};
@@ -17,7 +17,7 @@ const Text = styled('p')`
 `;
 
 const Link = styled('a')`
-  color: ${colors.purpleDark};
+  color: ${colors.primaryDark};
   display: inline-block;
   font-family: ${fonts.heading};
   font-size: 0.75rem;

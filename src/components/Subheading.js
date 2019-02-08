@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { fonts } from '../config/styles';
+import { fonts } from '../tokens';
 
 export default styled('h2')`
   font-family: ${fonts.default};

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { colors } from '../config/styles';
+import { colors } from '../tokens';
 
 const FootnoteDisplay = styled('aside')`
   position: fixed;
@@ -21,7 +21,7 @@ const FootnoteDisplay = styled('aside')`
     top: 0;
     left: 0;
     right: 0;
-    border-top: 2px solid ${colors.purple};
+    border-top: 2px solid ${colors.primary};
     border-bottom: 1px solid ${colors.grayAlpha};
   }
 
@@ -53,7 +53,7 @@ const TextWrap = styled('div')`
     width: 1rem;
     height: 1rem;
     margin: 0 0 1rem;
-    background-color: ${colors.purple};
+    background-color: ${colors.primary};
     border: 0;
     border-radius: 50%;
     color: ${colors.lightest};

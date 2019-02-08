@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { graphql, StaticQuery } from 'gatsby';
 import GatsbyImage from 'gatsby-image';
-import { media } from '../config/styles';
+import { media } from '../tokens';
 
 const Wrapper = styled('div')`
   @media ${media.large} {

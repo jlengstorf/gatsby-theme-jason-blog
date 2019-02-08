@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import { animation, colors, fonts } from '../config/styles';
+import { animation, colors, fonts } from '../tokens';
 
 export default styled('a')`
-  background: ${colors.purple};
+  background: ${colors.primary};
   border: 1px solid ${colors.lightest};
   box-shadow: 2px 2px 0 ${colors.grayAlphaExtra};
   border-radius: 4px;

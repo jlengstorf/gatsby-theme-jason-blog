@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { animation, colors } from '../config/styles';
+import { animation, colors } from '../tokens';
 
 const TagLink = styled(Link)`
   color: ${colors.gray};
@@ -19,7 +19,7 @@ const TagLink = styled(Link)`
   :hover,
   :active {
     background: transparent;
-    color: ${colors.purple};
+    color: ${colors.primary};
   }
 `;
 

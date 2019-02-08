@@ -10,7 +10,7 @@ import ContentArea from '../components/ContentArea';
 import ContentWithFootnotes from '../components/ContentWithFootnotes';
 import CTA from '../components/CTA';
 import WithPopover from '../components/WithPopover';
-import { media } from '../config/styles';
+import { media } from '../tokens';
 
 const getTitle = frontmatter => frontmatter.seo_title || frontmatter.title;
 

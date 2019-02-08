@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import Img from 'gatsby-image';
 import Overlay from './Overlay/Overlay';
 import OptIn from './OptIn';
-import { colors, media } from '../config/styles';
+import { colors, media } from '../tokens';
 
 const PopoverContainer = styled('div')`
   margin: 2rem 0;
