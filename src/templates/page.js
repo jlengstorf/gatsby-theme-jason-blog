@@ -4,7 +4,7 @@ import ContentWithFootnotes from '../components/ContentWithFootnotes';
 import ContentArea from '../components/ContentArea';
 import SEO from '../components/SEO/SEO';
 
-export default ({ children, pageContext, data }) => {
+export default ({ children, pageContext, data, location }) => {
   const postImage =
     data &&
     data.file &&
@@ -15,7 +15,11 @@ export default ({ children, pageContext, data }) => {
       : null;
 
   const seo = {
-    frontmatter: pageContext.frontmatter,
+    frontmatter: {
+      // By default, get the slug from the page location.
+      slug: location.pathname.replace(/[^\w\d-]/g, ''),
+      ...pageContext.frontmatter,
+    },
     postImage,
   };
 

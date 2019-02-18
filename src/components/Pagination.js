@@ -43,7 +43,7 @@ const Pagination = ({
     )}
     {!isFirstPage && (
       <PaginationLink
-        to={`${linkBase}${currentPage - 1 === 1 ? '' : currentPage - 1}`}
+        to={`${linkBase}${currentPage - 1 === 1 ? '' : currentPage - 1}/`}
       >
         ‹ newer posts
       </PaginationLink>
@@ -51,14 +51,14 @@ const Pagination = ({
     {!isLastPage && (
       <PaginationLink
         className="moveRight"
-        to={`${linkBase}${currentPage + 1}`}
+        to={`${linkBase}${currentPage + 1}/`}
       >
         older posts ›
       </PaginationLink>
     )}
     {!isLastPage && currentPage !== totalPages - 1 && (
       <PaginationLink
-        to={`${linkBase}${totalPages}`}
+        to={`${linkBase}${totalPages}/`}
         title="jump to oldest posts"
       >
         <span className="screen-reader-text">oldest posts</span> »

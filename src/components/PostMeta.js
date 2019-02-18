@@ -54,7 +54,7 @@ const PostMeta = ({ thumb, categories, tags, className }) => (
       ))}
       <Text>
         If you want to get more posts like this,{' '}
-        <Link to="/newsletter">join my newsletter</Link>.
+        <Link to="/newsletter/">join my newsletter</Link>.
       </Text>
     </StickyContainer>
   </Wrapper>
