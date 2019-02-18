@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import Layout from '../components/Layout';
 import CategoryLink from '../components/CategoryLink';
 import TagLink from '../components/TagLink';
 import Pagination from '../components/Pagination';
 import { colors } from '../tokens';
+import useSiteMetadata from '../hooks/use-site-metadata';
 
 const getHeading = ({
   isFirstPage,
@@ -84,69 +85,60 @@ const Previews = ({
     type,
     value,
   },
-}) => (
-  <Layout title="Blog">
-    <StaticQuery
-      query={graphql`
-        {
-          site {
-            siteMetadata {
-              categories {
-                name
-                slug
-              }
-            }
-          }
-        }
-      `}
-      render={({
-        site: {
-          siteMetadata: { categories },
-        },
-      }) => (
-        <Heading>
-          {getHeading({
-            isFirstPage,
-            currentPage,
-            totalPages,
-            type,
-            value,
-            categories,
-          })}
-        </Heading>
-      )}
-    />
-    {postGroup.map(({ id, childMdx: post }) => (
-      <Preview key={id}>
-        <PreviewHeading>
-          <PreviewLink to={`/${post.frontmatter.slug}/`}>
-            {post.frontmatter.title}
-          </PreviewLink>
-        </PreviewHeading>
-        <CategoryList>
-          {post.frontmatter.category.map(category => (
-            <CategoryLink key={`category-${category}`} category={category} />
-          ))}
-        </CategoryList>
-        <Excerpt>{post.frontmatter.description}</Excerpt>
-        {post.frontmatter.tag.map(tag => (
-          <TagLink key={`tag-${tag}`} tag={tag} />
-        ))}
-        <ReadMoreLink to={`/${post.frontmatter.slug}/`}>
-          Read post ›
-        </ReadMoreLink>
-      </Preview>
-    ))}
+}) => {
+  const { categories } = useSiteMetadata();
+  const category = categories.find(cat => cat.slug === value);
+  const title = {
+    all: 'All Posts',
+    tag: `Posts Tagged with “${value}”`,
+    category: `Posts About ${category ? category.name : value}`,
+  };
+  const page = !isFirstPage ? ` (page ${currentPage} of ${totalPages})` : '';
 
-    <Pagination
-      isFirstPage={isFirstPage}
-      isLastPage={isLastPage}
-      currentPage={currentPage}
-      totalPages={totalPages}
-      linkBase={linkBase}
-    />
-  </Layout>
-);
+  return (
+    <Layout title={`${title[type]}${page}`}>
+      <Heading>
+        {getHeading({
+          isFirstPage,
+          currentPage,
+          totalPages,
+          type,
+          value,
+          categories,
+        })}
+      </Heading>
+      {postGroup.map(({ id, childMdx: post }) => (
+        <Preview key={id}>
+          <PreviewHeading>
+            <PreviewLink to={`/${post.frontmatter.slug}/`}>
+              {post.frontmatter.title}
+            </PreviewLink>
+          </PreviewHeading>
+          <CategoryList>
+            {post.frontmatter.category.map(category => (
+              <CategoryLink key={`category-${category}`} category={category} />
+            ))}
+          </CategoryList>
+          <Excerpt>{post.frontmatter.description}</Excerpt>
+          {post.frontmatter.tag.map(tag => (
+            <TagLink key={`tag-${tag}`} tag={tag} />
+          ))}
+          <ReadMoreLink to={`/${post.frontmatter.slug}/`}>
+            Read post ›
+          </ReadMoreLink>
+        </Preview>
+      ))}
+
+      <Pagination
+        isFirstPage={isFirstPage}
+        isLastPage={isLastPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        linkBase={linkBase}
+      />
+    </Layout>
+  );
+};
 
 Previews.propTypes = {
   pageContext: PropTypes.shape({
