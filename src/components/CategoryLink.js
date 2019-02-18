@@ -49,7 +49,7 @@ const CategoryLink = React.memo(({ category, block = false }) => (
       const cat = categories.find(c => c.slug === category) || {};
 
       return (
-        <CatLink to={`/blog/category/${category}`}>
+        <CatLink to={`/blog/category/${category}/`}>
           {cat.name ? cat.name : category}
         </CatLink>
       );

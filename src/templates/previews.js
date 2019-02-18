@@ -119,7 +119,7 @@ const Previews = ({
     {postGroup.map(({ id, childMdx: post }) => (
       <Preview key={id}>
         <PreviewHeading>
-          <PreviewLink to={`/${post.frontmatter.slug}`}>
+          <PreviewLink to={`/${post.frontmatter.slug}/`}>
             {post.frontmatter.title}
           </PreviewLink>
         </PreviewHeading>
@@ -132,7 +132,7 @@ const Previews = ({
         {post.frontmatter.tag.map(tag => (
           <TagLink key={`tag-${tag}`} tag={tag} />
         ))}
-        <ReadMoreLink to={`/${post.frontmatter.slug}`}>
+        <ReadMoreLink to={`/${post.frontmatter.slug}/`}>
           Read post ›
         </ReadMoreLink>
       </Preview>

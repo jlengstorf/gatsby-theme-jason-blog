@@ -66,11 +66,11 @@ const FooterLink = styled(Link)`
 export default () => (
   <Footer>
     <FooterLink to="/">Home</FooterLink>
-    <FooterLink to="/blog">Blog</FooterLink>
-    <FooterLink to="/about">About</FooterLink>
-    <FooterLink to="/speaking">Speaking</FooterLink>
-    <FooterLink to="/contact">Contact</FooterLink>
-    <FooterLink to="/disclaimer">Disclaimer</FooterLink>
+    <FooterLink to="/blog/">Blog</FooterLink>
+    <FooterLink to="/about/">About</FooterLink>
+    <FooterLink to="/speaking/">Speaking</FooterLink>
+    <FooterLink to="/contact/">Contact</FooterLink>
+    <FooterLink to="/disclaimer/">Disclaimer</FooterLink>
     <Copyright>All content © Jason Lengstorf</Copyright>
   </Footer>
 );

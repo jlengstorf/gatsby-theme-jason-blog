@@ -159,20 +159,20 @@ const Logo = styled('img')`
 
 const topLevelNav = [
   {
-    href: '/blog',
+    href: '/blog/',
     label: 'Blog',
   },
   {
-    href: '/about',
+    href: '/about/',
     label: 'About',
   },
   {
-    href: '/speaking',
+    href: '/speaking/',
     label: 'Speaking',
     extraClass: 'hiddenSmall',
   },
   {
-    href: '/newsletter',
+    href: '/newsletter/',
     label: 'Newsletter',
   },
 ];

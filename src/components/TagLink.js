@@ -23,7 +23,7 @@ const TagLink = styled(Link)`
   }
 `;
 
-const Tag = ({ tag }) => <TagLink to={`/blog/tag/${tag}`}>{tag}</TagLink>;
+const Tag = ({ tag }) => <TagLink to={`/blog/tag/${tag}/`}>{tag}</TagLink>;
 
 Tag.propTypes = {
   tag: PropTypes.string.isRequired,
