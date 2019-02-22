@@ -1,5 +1,5 @@
 const path = require('path');
-const template = require('lodash.template');
+const { template, chunk } = require('lodash');
 
 const getUnique = (field, posts) =>
   posts.reduce((uniques, post) => {
@@ -24,47 +24,35 @@ const groupPostsByUnique = (field, posts) => {
 
 // Add paginated blog preview pages. Here’s how it works:
 //
-// 1.  We map over all the posts and — when we get to a post that starts
-//     a page — we slice the appropriate number of posts into a group.
-//     For all the other posts, we return `null`. This gives us
-//     something like `[[{post, ...}, null, null, {post, ...}, ...]]`
-// 2.  Next, we filter out all `null` entries.
-// 3.  Finally, we create a new page for each post group.
+// 1.  Use lodash-chunk to create posts in groups.
+// 2.  Finally, we create a new page for each post group.
 //
 // Adapted from https://github.com/pixelstew/gatsby-paginate
 const paginate = (
   { pathTemplate, createPage, component, type, value },
   posts,
 ) =>
-  posts
-    // 1
-    .map((_, index, allPosts) =>
-      index % 10 === 0 ? allPosts.slice(index, index + 10) : null,
-    )
-    // 2
-    .filter(item => item)
-    // 3
-    .forEach((postGroup, index, allGroups) => {
-      const isFirstPage = index === 0;
-      const currentPage = index + 1;
-      const totalPages = allGroups.length;
-      const getPath = template(pathTemplate);
+  chunk(posts, 10).forEach((postGroup, index, allGroups) => {
+    const isFirstPage = index === 0;
+    const currentPage = index + 1;
+    const totalPages = allGroups.length;
+    const getPath = template(pathTemplate);
 
-      createPage({
-        path: getPath({ pageNumber: isFirstPage ? '' : currentPage }),
-        component,
-        context: {
-          postGroup,
-          type,
-          value,
-          currentPage,
-          totalPages,
-          isFirstPage,
-          isLastPage: currentPage === totalPages,
-          linkBase: getPath({ pageNumber: '' }),
-        },
-      });
+    createPage({
+      path: getPath({ pageNumber: isFirstPage ? '' : currentPage }),
+      component,
+      context: {
+        postGroup,
+        type,
+        value,
+        currentPage,
+        totalPages,
+        isFirstPage,
+        isLastPage: currentPage === totalPages,
+        linkBase: getPath({ pageNumber: '' }),
+      },
     });
+  });
 
 // This is a shortcut so MDX can import components without gross relative paths.
 // Example: import { Figure } from '$components';
