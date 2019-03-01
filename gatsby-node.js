@@ -49,9 +49,10 @@ const paginate = (
       const currentPage = index + 1;
       const totalPages = allGroups.length;
       const getPath = template(pathTemplate);
+      const pagePath = getPath({ pageNumber: isFirstPage ? '' : currentPage });
 
       createPage({
-        path: getPath({ pageNumber: isFirstPage ? '' : currentPage }),
+        path: pagePath.replace('//', '/'),
         component,
         context: {
           postGroup,
