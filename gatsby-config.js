@@ -65,6 +65,8 @@ module.exports = {
           { resolve: 'gatsby-remark-copy-linked-files' },
           { resolve: 'gatsby-remark-numbered-footnotes' },
           { resolve: 'gatsby-remark-smartypants' },
+          { resolve: 'gatsby-remark-code-titles' },
+          { resolve: 'gatsby-remark-prismjs' },
         ],
       },
     },
@@ -99,6 +101,12 @@ module.exports = {
           'gatsby-remark-smartypants',
         ],
       },
-    }
+    },
+    {
+      resolve: 'gatsby-plugin-compile-es6-packages',
+      options: {
+        modules: ['gatsby-theme-jason-blog'],
+      },
+    },
   ],
 };
