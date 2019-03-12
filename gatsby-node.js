@@ -33,7 +33,7 @@ const groupPostsByUnique = (field, posts) => {
 //
 // Adapted from https://github.com/pixelstew/gatsby-paginate
 const paginate = (
-  { pathTemplate, createPage, component, type, value },
+  { pathTemplate, createPage, component, type, value, linkRoot = 'blog' },
   posts,
 ) =>
   posts
@@ -63,6 +63,7 @@ const paginate = (
           isFirstPage,
           isLastPage: currentPage === totalPages,
           linkBase: getPath({ pageNumber: '' }),
+          linkRoot,
         },
       });
     });
@@ -84,7 +85,7 @@ exports.onCreateBabelConfig = ({ actions }) => {
   });
 };
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage, createRedirect } = actions;
 
   const result = await graphql(`
@@ -93,23 +94,18 @@ exports.createPages = async ({ graphql, actions }) => {
         filter: { relativePath: { glob: "posts/**/*.{md,mdx}" } }
         sort: { fields: relativePath, order: DESC }
       ) {
-        edges {
-          node {
-            id
-            childMdx {
-              code {
-                scope
-              }
-              frontmatter {
-                publish
-                title
-                description
-                slug
-                images
-                cta
-                category
-                tag
-              }
+        nodes {
+          id
+          childMdx {
+            frontmatter {
+              publish
+              title
+              description
+              slug
+              images
+              cta
+              category
+              tag
             }
           }
         }
@@ -117,9 +113,9 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const posts = result.data.posts.edges
-    .map(({ node }) => node)
-    .filter(post => post.childMdx.frontmatter.publish !== false);
+  const posts = result.data.posts.nodes.filter(
+    post => post.childMdx.frontmatter.publish !== false,
+  );
 
   posts.forEach(post => {
     if (
@@ -155,16 +151,17 @@ exports.createPages = async ({ graphql, actions }) => {
     post => post.childMdx.frontmatter.publish !== false,
   );
 
-  const createPages = (type, postArray) => {
+  const createPages = (type, postArray, parent = 'blog') => {
     const groupedPosts = groupPostsByUnique(type, postArray);
 
     Object.entries(groupedPosts).forEach(([typeValue, postGroup]) => {
       paginate(
         {
           ...paginationDefaults,
-          pathTemplate: `/blog/${type}/${typeValue}/<%= pageNumber %>/`,
+          pathTemplate: `/${parent}/${type}/${typeValue}/<%= pageNumber %>/`,
           type,
           value: typeValue,
+          linkRoot: parent,
         },
         postGroup,
       );
@@ -183,6 +180,66 @@ exports.createPages = async ({ graphql, actions }) => {
     },
     allPosts,
   );
+
+  // CODE BLOG
+  const codeResult = await graphql(`
+    {
+      posts: allFile(
+        filter: { relativePath: { glob: "code/**/*.mdx" } }
+        sort: { fields: relativePath, order: DESC }
+      ) {
+        nodes {
+          id
+          childMdx {
+            frontmatter {
+              title
+              description
+              slug
+              images
+              category
+              tag
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (codeResult.error) {
+    reporter.panic('There was a problem loading code posts!');
+    return;
+  }
+
+  const codePosts = codeResult.data.posts.nodes;
+
+  codePosts.forEach(postNode => {
+    const post = postNode.childMdx.frontmatter;
+    const image = post.images && post.images[0];
+
+    createPage({
+      path: `/code/${post.slug}/`,
+      component: require.resolve('./src/templates/code-post.js'),
+      context: {
+        slug: post.slug,
+        imageRegex: `/${image}/`,
+        offer: `/offers/code/`,
+      },
+    });
+  });
+
+  createPages('tag', codePosts, 'code');
+  createPages('category', codePosts, 'code');
+  paginate(
+    {
+      ...paginationDefaults,
+      pathTemplate: '/code/<%= pageNumber %>/',
+      type: 'all',
+      value: null,
+      linkRoot: 'code',
+    },
+    codePosts,
+  );
+  // END CODE BLOG
 
   // The /hire-me page no longer exists, so send to contact instead.
   createRedirect({

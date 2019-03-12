@@ -82,6 +82,7 @@ const Previews = ({
     currentPage,
     totalPages,
     linkBase,
+    linkRoot,
     type,
     value,
   },
@@ -110,18 +111,26 @@ const Previews = ({
       {postGroup.map(({ id, childMdx: post }) => (
         <Preview key={id}>
           <PreviewHeading>
-            <PreviewLink to={`/${post.frontmatter.slug}/`}>
+            <PreviewLink
+              to={`/${linkRoot === 'code' ? `${linkRoot}/` : ''}${
+                post.frontmatter.slug
+              }/`}
+            >
               {post.frontmatter.title}
             </PreviewLink>
           </PreviewHeading>
           <CategoryList>
             {post.frontmatter.category.map(category => (
-              <CategoryLink key={`category-${category}`} category={category} />
+              <CategoryLink
+                key={`category-${category}`}
+                category={category}
+                linkRoot={linkRoot}
+              />
             ))}
           </CategoryList>
           <Excerpt>{post.frontmatter.description}</Excerpt>
           {post.frontmatter.tag.map(tag => (
-            <TagLink key={`tag-${tag}`} tag={tag} />
+            <TagLink key={`tag-${tag}`} tag={tag} linkRoot={linkRoot} />
           ))}
           <ReadMoreLink to={`/${post.frontmatter.slug}/`}>
             Read post ›
