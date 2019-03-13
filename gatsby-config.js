@@ -9,7 +9,7 @@ module.exports = {
       This is a blog theme. The description will be showed in SEO results on pages
       without their own descriptions.
     `,
-    canonicalUrl: 'https://example.com',
+    siteUrl: 'https://example.com',
     image: 'https://lengstorf.com/images/jason-lengstorf.jpg',
     author: {
       name: 'Your Name',
