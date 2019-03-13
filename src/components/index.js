@@ -1,7 +1,6 @@
 export { default as Aside } from './Aside';
 export { default as Button } from './Button';
 export { default as ErrorMessage } from './ErrorMessage';
-export { default as Figure } from './Figure';
 export { default as HeroBenefits } from './HeroBenefits';
 export { default as HeroButton } from './HeroButton';
 export { default as HeroContent } from './HeroContent';

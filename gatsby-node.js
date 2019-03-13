@@ -113,8 +113,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
-  console.log(JSON.stringify(result));
-
   const posts = result.data.posts.nodes.filter(
     post => post.childMdx.frontmatter.publish !== false,
   );

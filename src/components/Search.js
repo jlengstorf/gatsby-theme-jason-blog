@@ -179,10 +179,12 @@ export default () => {
         }}
         visible={active}
       >
-        <SearchArea>
-          <Search setActive={setActive} />
-          <Hits />
-        </SearchArea>
+        {active && (
+          <SearchArea>
+            <Search setActive={setActive} />
+            <Hits />
+          </SearchArea>
+        )}
       </Overlay>
     </InstantSearch>
   );
