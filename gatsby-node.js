@@ -69,7 +69,7 @@ const paginate = (
     });
 
 // This is a shortcut so MDX can import components without gross relative paths.
-// Example: import { Figure } from '$components';
+// Example: import { Image } from '$components';
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {

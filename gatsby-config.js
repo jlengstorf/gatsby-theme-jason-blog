@@ -48,11 +48,6 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/templates/page.js'),
         },
-        globalScope: `
-          import { Figure, Tweetable } from '$components';
-
-          export default { Figure, Tweetable };
-        `,
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
