@@ -46,8 +46,9 @@ const Code = () => (
       .gatsby-highlight-code-line {
         background-color: ${colors.grayAlphaExtra};
         display: block;
-        margin-right: -1em;
         margin-left: -1em;
+        margin-right: -1em;
+        margin-top: 0;
         padding-right: 1em;
         padding-left: 0.75em;
         border-left: 4px solid ${colors.primary};
