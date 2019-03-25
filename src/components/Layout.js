@@ -13,6 +13,7 @@ export default ({ children, title, className = '' }) => [
     defaultTitle="Jason Lengstorf"
   >
     <html lang="en" />
+    <link rel="preconnect" href="https://typekit.com" />
     <link rel="preconnect" href="https://use.typekit.net" />
     <link rel="preconnect" href="https://p.typekit.net" />
 
