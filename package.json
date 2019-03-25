@@ -61,7 +61,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "dotenv": "^6.2.0",
+    "dotenv": "^7.0.0",
     "gatsby": "^2.2.0-alpha.6",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
