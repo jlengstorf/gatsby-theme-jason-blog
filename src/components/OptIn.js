@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Button from './Button';
 import { animation, colors, media } from '../tokens';
 
-const API_URL = 'https://api-lengstorf.now.sh/user';
+const API_URL = 'https://app.convertkit.com/forms/957119/subscriptions';
 const API_REDIRECT = 'https://lengstorf.com/confirm';
 
 const Form = styled('form')`
@@ -125,9 +125,24 @@ const FormButton = styled(Button)`
   }
 `;
 
-const useForm = ({ source, group = 'DEFAULT' }) => {
+const getTagByGroup = group => {
+  switch (group) {
+    case 'PRODUCTIVE':
+      return '948586'; // tag: 5-habits-unfuckwithably-productive
+    case 'TRAVEL':
+      return '948573'; // tag: remote-work-checklist
+    case 'WORKHAPPY':
+    default:
+      return '948585'; // tag: 3-obvious-habits
+  }
+};
+
+const useForm = ({ source, tag }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [values, setFormValues] = useState({ FNAME: '', EMAIL: '' });
+  const [values, setFormValues] = useState({
+    first_name: '',
+    email_address: '',
+  });
 
   const updateValue = event => {
     const { id, value } = event.target;
@@ -145,9 +160,10 @@ const useForm = ({ source, group = 'DEFAULT' }) => {
 
     const formData = {
       ...values,
-      [group]: '1',
-      SOURCE: source,
-      redirect: API_REDIRECT,
+      fields: {
+        signup_source: source,
+      },
+      tags: [tag],
     };
 
     axios
@@ -168,9 +184,10 @@ const useForm = ({ source, group = 'DEFAULT' }) => {
 };
 
 const OptIn = ({ source, button = 'Get It Now', group = 'DEFAULT' }) => {
+  const tag = getTagByGroup(group);
   const [{ values, isSubmitting }, { updateValue, handleSubmit }] = useForm({
     source,
-    group,
+    tag,
   });
 
   const Btn = FormButton.withComponent('button');
@@ -182,24 +199,24 @@ const OptIn = ({ source, button = 'Get It Now', group = 'DEFAULT' }) => {
       method="post"
       onSubmit={handleSubmit}
     >
-      <Label htmlFor="FNAME">
+      <Label htmlFor="first_name">
         <Input
-          id="FNAME"
-          name="FNAME"
+          id="first_name"
+          name="fields[first_name]"
           type="text"
-          value={values.FNAME}
+          value={values.first_name}
           onChange={updateValue}
           disabled={isSubmitting}
           required
         />
         <LabelText>First Name</LabelText>
       </Label>
-      <Label htmlFor="EMAIL">
+      <Label htmlFor="email_address">
         <Input
-          id="EMAIL"
-          name="EMAIL"
+          id="email_address"
+          name="email_address"
           type="email"
-          value={values.EMAIL}
+          value={values.email_address}
           onChange={updateValue}
           disabled={isSubmitting}
           required
@@ -209,10 +226,8 @@ const OptIn = ({ source, button = 'Get It Now', group = 'DEFAULT' }) => {
       <Btn type="submit" name="subscribe" disabled={isSubmitting}>
         {isSubmitting ? 'Sending...' : button}
       </Btn>
-      <input type="hidden" name="SOURCE" value={source} />
-      <input type="hidden" name="status" value="pending" />
-      <input type="hidden" name="redirect" value={API_REDIRECT} />
-      <input type="hidden" name={group} value="1" />
+      <input type="hidden" name="tags[]" value={tag} />
+      <input type="hidden" name="fields[signup_source]" value={source} />
     </Form>
   );
 };
