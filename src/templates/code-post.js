@@ -1,7 +1,7 @@
 import 'prism-theme-night-owl';
 import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import SEO from '../components/SEO/SEO';
 import ContentArea from '../components/ContentArea';
 import Blog from '../components/Blog';
@@ -11,9 +11,7 @@ import GlobalCodeStyles from '../components/GlobalStyles/Code';
 export const pageQuery = graphql`
   query($slug: String!, $imageRegex: String!, $offer: String!) {
     post: mdx(frontmatter: { slug: { eq: $slug } }) {
-      code {
-        body
-      }
+      body
       frontmatter {
         title
         description
@@ -74,7 +72,7 @@ export default ({ data: { post, offer, image } }) => {
   } = offer;
 
   // Prevent rerenders when footnotes/popovers change.
-  const content = useMemo(() => <MDXRenderer>{post.code.body}</MDXRenderer>);
+  const content = useMemo(() => <MDXRenderer>{post.body}</MDXRenderer>);
 
   return (
     <React.Fragment>
