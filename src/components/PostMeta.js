@@ -46,7 +46,12 @@ const PostMeta = ({ thumb, categories, tags, className }) => (
       />
       <Text>Posted in:</Text>
       {categories.map(category => (
-        <CategoryLink key={`category-${category}`} category={category} block />
+        <CategoryLink
+          key={`category-${category}`}
+          category={category}
+          linkRoot="blog"
+          block
+        />
       ))}
       <Text>Tags:</Text>
       {tags.map(tag => (
