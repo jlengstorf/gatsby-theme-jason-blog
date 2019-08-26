@@ -97,6 +97,7 @@ export default ({ data: { post, offer, image } }) => {
                 thumb={image.thumb}
                 categories={post.frontmatter.category}
                 tags={post.frontmatter.tag}
+                linkRoot="code"
               />
               <Blog.Content
                 render={() => <ContentArea>{content}</ContentArea>}
