@@ -216,8 +216,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const post = postNode.childMdx.frontmatter;
     const image = post.images && post.images[0];
 
+    createRedirect({
+      fromPath: `/code/${post.slug}/`,
+      toPath: `/${post.slug}/`,
+      isPermanent: true,
+      redirectInBrowser: true,
+    });
+
     createPage({
-      path: `/code/${post.slug}/`,
+      path: `/${post.slug}/`,
       component: require.resolve('./src/templates/code-post.js'),
       context: {
         slug: post.slug,

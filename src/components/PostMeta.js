@@ -55,7 +55,7 @@ const PostMeta = ({ thumb, categories, tags, className }) => (
       ))}
       <Text>Tags:</Text>
       {tags.map(tag => (
-        <TagLink key={`tag-${tag}`} tag={tag} />
+        <TagLink key={`tag-${tag}`} linkRoot="blog" tag={tag} />
       ))}
       <Text>
         If you want to get more posts like this,{' '}
