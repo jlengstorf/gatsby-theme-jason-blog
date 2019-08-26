@@ -157,7 +157,6 @@ export const pageQuery = graphql`
         category
         tag
         datePublished: date(formatString: "YYYY-MM-DDTHH:mm:ssZ")
-        images
         seo_title
         slug
         cta
