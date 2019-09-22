@@ -61,7 +61,10 @@ export default React.memo(
             publisher: {
               '@type': 'Organization',
               url: organization.url,
-              logo: organization.logo,
+              logo: {
+                '@type': 'ImageObject',
+                url: organization.logo
+              },
               name: organization.name,
             },
             mainEntityOfPage: {
