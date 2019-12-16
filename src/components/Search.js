@@ -173,34 +173,30 @@ export default () => {
   const [active, setActive] = useState(false);
 
   return (
-    <InstantSearch
-      searchClient={client}
-      indexName="lengstorf-blog"
-      root={{ Root: SearchContainer }}
-    >
-      <Configure distinct={1} />
-      <OpenSearch
-        href="/search"
-        onClick={event => {
-          event.preventDefault();
-          setActive(true);
-        }}
-      >
-        <Icon title="Search the blog" />
-      </OpenSearch>
-      <Overlay
-        hidePopover={() => {
-          setActive(false);
-        }}
-        visible={active}
-      >
-        {active && (
-          <SearchArea>
-            <Search setActive={setActive} />
-            <Hits />
-          </SearchArea>
-        )}
-      </Overlay>
-    </InstantSearch>
+    <SearchContainer>
+      <InstantSearch searchClient={client} indexName="lengstorf-blog">
+        <Configure distinct={1} />
+
+        <OpenSearch
+          href="/search"
+          onClick={event => {
+            event.preventDefault();
+            setActive(true);
+          }}
+        >
+          <Icon title="Search the blog" />
+        </OpenSearch>
+
+        <Overlay hidePopover={() => setActive(false)} visible={active}>
+          {active && (
+            <SearchArea>
+              <Search setActive={setActive} />
+
+              <Hits />
+            </SearchArea>
+          )}
+        </Overlay>
+      </InstantSearch>
+    </SearchContainer>
   );
 };
