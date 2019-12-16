@@ -179,6 +179,7 @@ export default () => {
       root={{ Root: SearchContainer }}
     >
       <Configure distinct={1} />
+
       <OpenSearch
         href="/search"
         onClick={event => {
@@ -188,15 +189,12 @@ export default () => {
       >
         <Icon title="Search the blog" />
       </OpenSearch>
-      <Overlay
-        hidePopover={() => {
-          setActive(false);
-        }}
-        visible={active}
-      >
+
+      <Overlay hidePopover={() => setActive(false)} visible={active}>
         {active && (
           <SearchArea>
             <Search setActive={setActive} />
+
             <Hits />
           </SearchArea>
         )}
