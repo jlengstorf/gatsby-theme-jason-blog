@@ -12,7 +12,7 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => (
           siteMetadata {
             title
             description
-            canonicalUrl
+            siteUrl
             image
             author {
               name
@@ -36,10 +36,10 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => (
 
       const title = postMeta.title || seo.title;
       const description = postMeta.description || seo.description;
-      const image = postImage ? `${seo.canonicalUrl}${postImage}` : seo.image;
+      const image = postImage ? `${seo.siteUrl}${postImage}` : seo.image;
       const url = postMeta.slug
-        ? `${seo.canonicalUrl}/${postMeta.slug}/`
-        : seo.canonicalUrl;
+        ? `${seo.siteUrl}/${postMeta.slug}/`
+        : seo.siteUrl;
       const datePublished = isBlogPost ? postMeta.datePublished : false;
 
       return (
@@ -73,7 +73,7 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => (
             image={image}
             description={description}
             datePublished={datePublished}
-            canonicalUrl={seo.canonicalUrl}
+            siteUrl={seo.siteUrl}
             author={seo.author}
             organization={seo.organization}
             defaultTitle={seo.title}

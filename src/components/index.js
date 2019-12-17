@@ -1,6 +1,6 @@
+export { default as Aside } from './Aside';
 export { default as Button } from './Button';
 export { default as ErrorMessage } from './ErrorMessage';
-export { default as Figure } from './Figure';
 export { default as HeroBenefits } from './HeroBenefits';
 export { default as HeroButton } from './HeroButton';
 export { default as HeroContent } from './HeroContent';
@@ -9,6 +9,8 @@ export { default as HeroImage } from './HeroImage';
 export { default as HeroText } from './HeroText';
 export { default as HeroWrapper } from './HeroWrapper';
 export { default as Heading } from './Heading';
+export { default as Iframe } from './Iframe';
+export { default as Image } from './Image';
 export { default as Lede } from './Lede';
 export { default as OfficialBio } from './OfficialBio';
 export { default as OptIn } from './OptIn';

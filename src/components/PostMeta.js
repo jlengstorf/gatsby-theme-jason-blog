@@ -36,7 +36,13 @@ const Text = styled('p')`
   margin-top: 0.75rem;
 `;
 
-const PostMeta = ({ thumb, categories, tags, className }) => (
+const PostMeta = ({
+  thumb,
+  categories,
+  tags,
+  className,
+  linkRoot = 'blog',
+}) => (
   <Wrapper className={className}>
     <StickyContainer>
       <Image
@@ -46,11 +52,16 @@ const PostMeta = ({ thumb, categories, tags, className }) => (
       />
       <Text>Posted in:</Text>
       {categories.map(category => (
-        <CategoryLink key={`category-${category}`} category={category} block />
+        <CategoryLink
+          key={`category-${category}`}
+          category={category}
+          linkRoot={linkRoot}
+          block
+        />
       ))}
       <Text>Tags:</Text>
       {tags.map(tag => (
-        <TagLink key={`tag-${tag}`} tag={tag} />
+        <TagLink key={`tag-${tag}`} linkRoot={linkRoot} tag={tag} />
       ))}
       <Text>
         If you want to get more posts like this,{' '}

@@ -7,7 +7,7 @@ const useSiteMetadata = () => {
         siteMetadata {
           title
           description
-          canonicalUrl
+          siteUrl
           image
           author {
             name

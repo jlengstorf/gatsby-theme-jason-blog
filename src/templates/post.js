@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from '@emotion/styled';
 import SEO from '../components/SEO/SEO';
 import Layout from '../components/Layout';
@@ -110,7 +110,7 @@ export default ({ data: { post, offer, image } }) => {
   } = offer;
 
   // Prevent rerenders when footnotes/popovers change.
-  const content = useMemo(() => <MDXRenderer>{post.code.body}</MDXRenderer>);
+  const content = useMemo(() => <MDXRenderer>{post.body}</MDXRenderer>);
 
   return (
     <React.Fragment>
@@ -150,17 +150,13 @@ export default ({ data: { post, offer, image } }) => {
 export const pageQuery = graphql`
   query($slug: String!, $imageRegex: String!, $offer: String!) {
     post: mdx(frontmatter: { slug: { eq: $slug } }) {
-      code {
-        scope
-        body
-      }
+      body
       frontmatter {
         title
         description
         category
         tag
         datePublished: date(formatString: "YYYY-MM-DDTHH:mm:ssZ")
-        images
         seo_title
         slug
         cta

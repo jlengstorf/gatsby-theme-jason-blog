@@ -125,6 +125,18 @@ const Input = styled('input')`
   width: 100%;
 `;
 
+const SearchCredit = styled('p')`
+  color: ${colors.textLight};
+  font-size: 0.75rem;
+  margin: 0.25rem auto 0;
+  max-width: 650px;
+  text-align: right;
+
+  a {
+    color: inherit;
+  }
+`;
+
 const Search = connectSearchBox(({ currentRefinement, refine, setActive }) => (
   <form noValidate action="" role="search">
     <Label htmlFor="search">
@@ -144,6 +156,9 @@ const Search = connectSearchBox(({ currentRefinement, refine, setActive }) => (
         }}
       />
     </Label>
+    <SearchCredit>
+      Search powered by <a href="https://www.algolia.com">Algolia</a>
+    </SearchCredit>
   </form>
 ));
 
@@ -179,10 +194,12 @@ export default () => {
         }}
         visible={active}
       >
-        <SearchArea>
-          <Search setActive={setActive} />
-          <Hits />
-        </SearchArea>
+        {active && (
+          <SearchArea>
+            <Search setActive={setActive} />
+            <Hits />
+          </SearchArea>
+        )}
       </Overlay>
     </InstantSearch>
   );

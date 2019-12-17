@@ -9,7 +9,7 @@ module.exports = {
       This is a blog theme. The description will be showed in SEO results on pages
       without their own descriptions.
     `,
-    canonicalUrl: 'https://example.com',
+    siteUrl: 'https://example.com',
     image: 'https://lengstorf.com/images/jason-lengstorf.jpg',
     author: {
       name: 'Your Name',
@@ -42,17 +42,12 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-mdx',
+      resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.mdx', '.md'],
         defaultLayouts: {
           default: require.resolve('./src/templates/page.js'),
         },
-        globalScope: `
-          import { Figure, Tweetable } from '$components';
-
-          export default { Figure, Tweetable };
-        `,
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
@@ -65,6 +60,8 @@ module.exports = {
           { resolve: 'gatsby-remark-copy-linked-files' },
           { resolve: 'gatsby-remark-numbered-footnotes' },
           { resolve: 'gatsby-remark-smartypants' },
+          { resolve: 'gatsby-remark-code-titles' },
+          { resolve: 'gatsby-remark-prismjs' },
         ],
       },
     },
@@ -99,6 +96,6 @@ module.exports = {
           'gatsby-remark-smartypants',
         ],
       },
-    }
+    },
   ],
 };

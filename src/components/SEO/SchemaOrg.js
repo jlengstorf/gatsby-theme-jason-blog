@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 export default React.memo(
   ({
     author,
-    canonicalUrl,
+    siteUrl,
     datePublished,
     defaultTitle,
     description,
@@ -61,12 +61,15 @@ export default React.memo(
             publisher: {
               '@type': 'Organization',
               url: organization.url,
-              logo: organization.logo,
+              logo: {
+                '@type': 'ImageObject',
+                url: organization.logo
+              },
               name: organization.name,
             },
             mainEntityOfPage: {
               '@type': 'WebSite',
-              '@id': canonicalUrl,
+              '@id': siteUrl,
             },
             datePublished,
           },

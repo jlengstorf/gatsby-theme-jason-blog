@@ -27,7 +27,7 @@ const CatLink = styled(Link)`
   }
 `;
 
-const CategoryLink = React.memo(({ category, block = false }) => (
+const CategoryLink = React.memo(({ category, block = false, linkRoot }) => (
   <StaticQuery
     query={graphql`
       {
@@ -49,7 +49,7 @@ const CategoryLink = React.memo(({ category, block = false }) => (
       const cat = categories.find(c => c.slug === category) || {};
 
       return (
-        <CatLink to={`/blog/category/${category}/`}>
+        <CatLink to={`/${linkRoot}/category/${category}/`}>
           {cat.name ? cat.name : category}
         </CatLink>
       );
