@@ -180,7 +180,10 @@ const useForm = ({ source, tag }) => {
       });
   };
 
-  return [{ values, isSubmitting }, { updateValue, handleSubmit }];
+  return [
+    { values, isSubmitting },
+    { updateValue, handleSubmit },
+  ];
 };
 
 const OptIn = ({ source, button = 'Get It Now', group = 'DEFAULT' }) => {

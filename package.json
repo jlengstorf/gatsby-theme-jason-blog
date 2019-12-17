@@ -62,6 +62,9 @@
   "devDependencies": {
     "dotenv": "^8.0.0",
     "gatsby": "^2.2.0-alpha.6",
+    "husky": "^3.1.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "^2.0.1",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "semantic-release": "^15.13.3",
