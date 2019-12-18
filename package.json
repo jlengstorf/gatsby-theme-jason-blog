@@ -36,6 +36,7 @@
     "gatsby-plugin-twitter": "^2.1.17",
     "gatsby-remark-code-titles": "^1.1.0",
     "gatsby-remark-copy-linked-files": "^2.1.33",
+    "gatsby-remark-embedder": "^1.6.0",
     "gatsby-remark-images": "^3.1.38",
     "gatsby-remark-numbered-footnotes": "^1.0.1",
     "gatsby-remark-prismjs": "^3.3.27",
