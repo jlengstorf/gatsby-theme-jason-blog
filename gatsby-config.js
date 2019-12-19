@@ -49,6 +49,7 @@ module.exports = {
           default: require.resolve('./src/templates/page.js'),
         },
         gatsbyRemarkPlugins: [
+          'gatsby-remark-embedder',
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -81,6 +82,7 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          'gatsby-remark-embedder',
           {
             resolve: 'gatsby-remark-images',
             options: {
