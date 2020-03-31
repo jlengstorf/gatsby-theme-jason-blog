@@ -125,7 +125,7 @@ const FormButton = styled(Button)`
   }
 `;
 
-const getTagByGroup = group => {
+const getTagByGroup = (group) => {
   switch (group) {
     case 'PRODUCTIVE':
       return '948586'; // tag: 5-habits-unfuckwithably-productive
@@ -144,13 +144,13 @@ const useForm = ({ source, tag }) => {
     email_address: '',
   });
 
-  const updateValue = event => {
+  const updateValue = (event) => {
     const { id, value } = event.target;
 
-    setFormValues(state => ({ ...state, [id]: value }));
+    setFormValues((state) => ({ ...state, [id]: value }));
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     if (typeof window === 'undefined') {
       return;
     }
