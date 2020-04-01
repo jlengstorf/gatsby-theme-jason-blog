@@ -51,7 +51,7 @@ const PostMeta = ({
         fluid={thumb.fluid}
       />
       <Text>Posted in:</Text>
-      {categories.map(category => (
+      {categories.map((category) => (
         <CategoryLink
           key={`category-${category}`}
           category={category}
@@ -60,7 +60,7 @@ const PostMeta = ({
         />
       ))}
       <Text>Tags:</Text>
-      {tags.map(tag => (
+      {tags.map((tag) => (
         <TagLink key={`tag-${tag}`} linkRoot={linkRoot} tag={tag} />
       ))}
       <Text>

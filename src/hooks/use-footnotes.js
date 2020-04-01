@@ -15,12 +15,12 @@ const useFootnotes = () => {
     }, 300);
   };
 
-  const handleFootnoteClose = event => {
+  const handleFootnoteClose = (event) => {
     event.preventDefault();
     close();
   };
 
-  const handleLinkClicks = event => {
+  const handleLinkClicks = (event) => {
     // Don’t do anything for non-footnote links.
     if (!event.target.classList.contains('footnote-ref')) {
       return;

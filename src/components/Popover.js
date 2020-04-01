@@ -120,7 +120,7 @@ const Popover = ({
       <TextWrap>
         <Heading>{heading}</Heading>
         <ul>
-          {benefits.map(benefit => (
+          {benefits.map((benefit) => (
             <li
               key={`benefit-${benefit}`}
               dangerouslySetInnerHTML={{ __html: benefit }}

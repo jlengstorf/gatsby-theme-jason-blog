@@ -46,7 +46,7 @@ const CategoryLink = React.memo(({ category, block = false, linkRoot }) => (
         siteMetadata: { categories },
       },
     }) => {
-      const cat = categories.find(c => c.slug === category) || {};
+      const cat = categories.find((c) => c.slug === category) || {};
 
       return (
         <CatLink to={`/${linkRoot}/category/${category}/`}>

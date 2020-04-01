@@ -32,7 +32,7 @@ const Overlay = styled('div')`
   }
 `;
 
-const handleOnDirectClick = handlerFn => event => {
+const handleOnDirectClick = (handlerFn) => (event) => {
   console.log(event.target.classList);
   console.log(Overlay);
   if (event.target.classList.contains(Overlay)) {
@@ -64,7 +64,7 @@ export default ({ children, hidePopover, visible, onEntered = () => {} }) => {
       onEntered={onEntered}
       onExited={handleExited}
     >
-      {state => (
+      {(state) => (
         // Adding a “click the background to close” functionality as a convenience
         // to mouse users. The close button is available for screen reader and
         // keyboard users, so I’m ignoring these a11y linter rules.
