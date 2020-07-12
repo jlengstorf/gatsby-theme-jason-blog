@@ -11,7 +11,7 @@ const WithPopover = ({ render, heading, benefits, button, group, source }) => {
   const openPopover = () => setShowPopover(true);
   const closePopover = () => setShowPopover(false);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     if (event.target.classList.contains('js--open-popover')) {
       event.preventDefault();
       setShowPopover(true);
@@ -40,7 +40,7 @@ const WithPopover = ({ render, heading, benefits, button, group, source }) => {
           }
         }
       `}
-      render={data => (
+      render={(data) => (
         <Popover
           visible={showPopover}
           closeFn={closePopover}

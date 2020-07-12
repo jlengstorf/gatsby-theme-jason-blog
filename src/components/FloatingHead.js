@@ -55,7 +55,7 @@ const FloatingHead = ({ className }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <Wrapper className={className}>
         <Image
           alt="Jason Lengstorf."

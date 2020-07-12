@@ -60,7 +60,7 @@ const Link = styled('a')`
 
 const Hits = connectHits(({ hits }) => (
   <List>
-    {hits.map(hit => (
+    {hits.map((hit) => (
       <Result key={hit.objectID}>
         <Heading>
           <a href={`/${hit.slug}`}>
@@ -150,7 +150,7 @@ const Search = connectSearchBox(({ currentRefinement, refine, setActive }) => (
             setActive(false);
           }
         }}
-        onChange={event => {
+        onChange={(event) => {
           setActive(true);
           refine(event.currentTarget.value);
         }}
@@ -182,7 +182,7 @@ export default () => {
 
       <OpenSearch
         href="/search"
-        onClick={event => {
+        onClick={(event) => {
           event.preventDefault();
           setActive(true);
         }}

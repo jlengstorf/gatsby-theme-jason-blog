@@ -12,7 +12,7 @@ import CTA from '../components/CTA';
 import WithPopover from '../components/WithPopover';
 import { media } from '../tokens';
 
-const getTitle = frontmatter => frontmatter.seo_title || frontmatter.title;
+const getTitle = (frontmatter) => frontmatter.seo_title || frontmatter.title;
 
 const BlogLayout = styled(Layout)`
   margin: 5rem auto 6rem;

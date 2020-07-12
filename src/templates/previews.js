@@ -18,7 +18,7 @@ const getHeading = ({
   categories,
 }) => {
   if (type === 'category' && value) {
-    const category = categories.find(c => c.slug === value);
+    const category = categories.find((c) => c.slug === value);
     const displayName = category ? category.name : value;
     return `Posts in the category “${displayName}”`;
   }
@@ -88,7 +88,7 @@ const Previews = ({
   },
 }) => {
   const { categories } = useSiteMetadata();
-  const category = categories.find(cat => cat.slug === value);
+  const category = categories.find((cat) => cat.slug === value);
   const title = {
     all: 'All Posts',
     tag: `Posts Tagged with “${value}”`,
@@ -120,7 +120,7 @@ const Previews = ({
             </PreviewLink>
           </PreviewHeading>
           <CategoryList>
-            {post.frontmatter.category.map(category => (
+            {post.frontmatter.category.map((category) => (
               <CategoryLink
                 key={`category-${category}`}
                 category={category}
@@ -129,7 +129,7 @@ const Previews = ({
             ))}
           </CategoryList>
           <Excerpt>{post.frontmatter.description}</Excerpt>
-          {post.frontmatter.tag.map(tag => (
+          {post.frontmatter.tag.map((tag) => (
             <TagLink key={`tag-${tag}`} tag={tag} linkRoot={linkRoot} />
           ))}
           <ReadMoreLink to={`/${post.frontmatter.slug}/`}>

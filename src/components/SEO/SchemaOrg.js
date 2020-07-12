@@ -63,7 +63,7 @@ export default React.memo(
               url: organization.url,
               logo: {
                 '@type': 'ImageObject',
-                url: organization.logo
+                url: organization.logo,
               },
               name: organization.name,
             },

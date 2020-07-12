@@ -52,7 +52,7 @@ export const pageQuery = graphql`
   }
 `;
 
-const getTitle = frontmatter => frontmatter.seo_title || frontmatter.title;
+const getTitle = (frontmatter) => frontmatter.seo_title || frontmatter.title;
 
 export default ({ data: { post, offer, image } }) => {
   if (
