@@ -5,7 +5,7 @@ const getUnique = (field, posts) =>
   posts.reduce((uniques, post) => {
     const values = post.childMdx.frontmatter[field];
 
-    return uniques.concat(values.filter(val => !uniques.includes(val)));
+    return uniques.concat(values.filter((val) => !uniques.includes(val)));
   }, []);
 
 const groupPostsByUnique = (field, posts) => {
@@ -14,7 +14,7 @@ const groupPostsByUnique = (field, posts) => {
   return uniqueValues.reduce(
     (grouped, unique) => ({
       ...grouped,
-      [unique]: posts.filter(post =>
+      [unique]: posts.filter((post) =>
         post.childMdx.frontmatter[field].includes(unique),
       ),
     }),
@@ -80,7 +80,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     {
       posts: allFile(
         filter: { relativePath: { glob: "posts/**/*.{md,mdx}" } }
-        sort: { fields: relativePath, order: DESC }
+        sort: { fields: childMdx___frontmatter___date, order: DESC }
       ) {
         nodes {
           id
@@ -102,10 +102,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `);
 
   const posts = result.data.posts.nodes.filter(
-    post => post.childMdx.frontmatter.publish !== false,
+    (post) => post.childMdx.frontmatter.publish !== false,
   );
 
-  posts.forEach(post => {
+  posts.forEach((post) => {
     if (
       !post.childMdx ||
       !post.childMdx.frontmatter ||
@@ -136,7 +136,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   };
 
   const allPosts = posts.filter(
-    post => post.childMdx.frontmatter.publish !== false,
+    (post) => post.childMdx.frontmatter.publish !== false,
   );
 
   const createPages = (type, postArray, parent = 'blog') => {
@@ -200,7 +200,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const codePosts = codeResult.data.posts.nodes;
 
-  codePosts.forEach(postNode => {
+  codePosts.forEach((postNode) => {
     const post = postNode.childMdx.frontmatter;
     const image = post.images && post.images[0];
 
