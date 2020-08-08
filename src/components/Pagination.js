@@ -37,13 +37,18 @@ const Pagination = ({
 }) => (
   <Wrapper>
     {!isFirstPage && currentPage !== 2 && (
-      <PaginationLink to={linkBase} title="jump to newest posts">
+      <PaginationLink
+        to={linkBase.replace(/\/\//gi, '/')}
+        title="jump to newest posts"
+      >
         « <span className="screen-reader-text">newest posts</span>
       </PaginationLink>
     )}
     {!isFirstPage && (
       <PaginationLink
-        to={`${linkBase}${currentPage - 1 === 1 ? '' : currentPage - 1}/`}
+        to={`${linkBase}${
+          currentPage - 1 === 1 ? '' : currentPage - 1
+        }/`.replace(/\/\//gi, '/')}
       >
         ‹ newer posts
       </PaginationLink>
@@ -51,14 +56,14 @@ const Pagination = ({
     {!isLastPage && (
       <PaginationLink
         className="moveRight"
-        to={`${linkBase}${currentPage + 1}/`}
+        to={`${linkBase}${currentPage + 1}/`.replace(/\/\//gi, '/')}
       >
         older posts ›
       </PaginationLink>
     )}
     {!isLastPage && currentPage !== totalPages - 1 && (
       <PaginationLink
-        to={`${linkBase}${totalPages}/`}
+        to={`${linkBase}${totalPages}/`.replace(/\/\//gi, '/')}
         title="jump to oldest posts"
       >
         <span className="screen-reader-text">oldest posts</span> »
