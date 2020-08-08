@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-jason-blog",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "author": "Jason Lengstorf <jason@lengstorf.com>",
   "license": "MIT",
