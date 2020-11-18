@@ -66,7 +66,7 @@
     "pretty-quick": "^2.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "semantic-release": "^17.0.4",
+    "semantic-release": "^17.2.3",
     "webpack-bundle-analyzer": "^3.6.1"
   },
   "peerDependencies": {
